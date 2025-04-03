@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata: 
+  name: prometheus
+  namespace: argocd
+spec:
+  template:
+    metadata: 
+      name: '{{name}}-prometheus'
+    spec: 
+      project: default
+      source:
+        repoURL: https://prometheus-community.github.io/helm-charts
+        chart: prometheus
+        targetRevision: 27.1.0
+        helm:
+          parameters:
+            - name: alertmanager.enabled
+              value: "false"
+            - name: pushgateway.enabled
+              value: "false"
+            - name: server.service.type
+              value: "LoadBalancer"
+            - name: server.persistentVolume.enabled
+              value: "false"
+          releaseName: prometheus
+          namespace: monitoramento
+      destination:
+        server: '{{server}}'
+        namespace: webcolor
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        syncOptions:
+          - CreateNamespace=true
+  generators:
+  - clusters: {}
