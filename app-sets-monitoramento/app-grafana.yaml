@@ -21,7 +21,7 @@ spec:
           namespace: monitoramento
       destination:
         server: {{server}}
-        namespace: monitoramento
+        namespace: 'monitoramento-{{environment}}'
       syncPolicy:
         automated:
           selfHeal: true
@@ -29,4 +29,10 @@ spec:
         syncOptions:
           - CreateNamespace=true
   generators:
-  - clusters: {}
+  - matrix:
+      generators:
+      - list:
+          elements:
+            - environment: dev
+            - environment: prod
+      - clusters: {}
