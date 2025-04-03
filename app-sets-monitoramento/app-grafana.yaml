@@ -6,7 +6,7 @@ metadata:
 spec:
   template:
     metadata: 
-      name: 'prometheus-{{environment}}'
+      name: 'grafana-{{environment}}'
     spec: 
       project: default
       source:
@@ -21,7 +21,7 @@ spec:
           namespace: monitoramento
       destination:
         server: '{{server}}'
-        namespace: 'grafana-{{environment}}'
+        namespace: 'monitoramento-{{environment}}'
       syncPolicy:
         automated:
           selfHeal: true
