@@ -27,7 +27,7 @@ spec:
           namespace: monitoramento
       destination:
         server: '{{server}}'
-        namespace: 'monitoramento-{{environment}}'
+        namespace: 'prometheus-{{environment}}'
       syncPolicy:
         automated:
           selfHeal: true
