@@ -26,8 +26,8 @@ spec:
           releaseName: prometheus
           namespace: monitoramento
       destination:
-        server: https://kubernetes.default.svc
-        namespace: webcolor
+        server: {{server}}
+        namespace: monitoramento
       syncPolicy:
         automated:
           selfHeal: true
