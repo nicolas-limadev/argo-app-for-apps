@@ -6,7 +6,7 @@ metadata:
 spec:
   template:
     metadata: 
-      name: '{{name}}-prometheus-{{environment}}'
+      name: 'prometheus-{{environment}}'
     spec: 
       project: default
       source:
@@ -26,7 +26,7 @@ spec:
           releaseName: prometheus
           namespace: monitoramento
       destination:
-        server: {{server}}
+        server: '{{server}}'
         namespace: 'monitoramento-{{environment}}'
       syncPolicy:
         automated:
