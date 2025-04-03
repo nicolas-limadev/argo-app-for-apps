@@ -20,7 +20,7 @@ spec:
           releaseName: grafana
           namespace: monitoramento
       destination:
-        server: '{{server}}'
+        server: https://kubernetes.default.svc
         namespace: webcolor
       syncPolicy:
         automated:
